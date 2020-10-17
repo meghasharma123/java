@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://www.vectorlogo.zone/logos/java/java-wordmark.svg"></h1>
+<h1 align="center"><img height="50" src="https://www.vectorlogo.zone/logos/java/java-wordmark.svg"></h1>
 
 <p align="center">
 <img style="padding:10px;" src="https://img.shields.io/badge/Open%20Source-💕%20-9cf?style=for-the-badge"><br>
