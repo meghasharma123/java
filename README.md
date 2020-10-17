@@ -8,7 +8,7 @@
 <img style="padding:10px;" src="https://img.shields.io/github/languages/count/meghasharma123/java?style=flat-square">
   
   
-It is an open repository which includes projects only related to Java
+It is an open repository which includes projects only related to <img height="20" src="https://www.vectorlogo.zone/logos/java/java-wordmark.svg">
 
 </p>
 
