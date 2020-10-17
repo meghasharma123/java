@@ -23,7 +23,7 @@ Anyone :family: Absolutely anyone can contribute to this repository.
 ## How to contribute to this repository?
 
 - Fork this repository.
-- Create a new file :open_file_folder: or upload one.
+- Create a new file :open_file_folder: or upload one :arrow_up:
 - Create a pull request.
 
 ## Rules
