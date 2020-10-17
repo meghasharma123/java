@@ -1,2 +1,2 @@
 # java
-Project related to java.
+Project related to java. :-)
