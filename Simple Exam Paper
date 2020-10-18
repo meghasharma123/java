@@ -1,0 +1,185 @@
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.*;  
+  
+class OnlineTest extends JFrame implements ActionListener  
+{  
+    JLabel l;  
+    JRadioButton jb[]=new JRadioButton[5];  
+    JButton b1,b2;  
+    ButtonGroup bg;  
+    int count=0,current=0,x=1,y=1,now=0;  
+    int m[]=new int[10];      
+    OnlineTest(String s)  
+    {  
+        super(s);  
+        l=new JLabel();  
+        add(l);  
+        bg=new ButtonGroup();  
+        for(int i=0;i<5;i++)  
+        {  
+            jb[i]=new JRadioButton();     
+            add(jb[i]);  
+            bg.add(jb[i]);  
+        }  
+        b1=new JButton("Next");  
+        b2=new JButton("Save");  
+        b1.addActionListener(this);  
+        b2.addActionListener(this);  
+        add(b1);add(b2);  
+        set();  
+        l.setBounds(30,40,450,20);  
+        jb[0].setBounds(50,80,100,20);  
+        jb[1].setBounds(50,110,100,20);  
+        jb[2].setBounds(50,140,100,20);  
+        jb[3].setBounds(50,170,100,20);  
+        b1.setBounds(100,240,100,30);  
+        b2.setBounds(270,240,100,30);  
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        setLayout(null);  
+        setLocation(250,100);  
+        setVisible(true);  
+        setSize(600,350);  
+    }  
+    public void actionPerformed(ActionEvent e)  
+    {  
+        if(e.getSource()==b1)  
+        {  
+            if(check())  
+                count=count+1;  
+            current++;  
+            set();    
+            if(current==9)  
+            {  
+                b1.setEnabled(false);  
+                b2.setText("Result");  
+            }  
+        }  
+        if(e.getActionCommand().equals("Save"))  
+        {  
+            JButton bk=new JButton("Save"+x);  
+            bk.setBounds(480,20+30*x,100,30);  
+            add(bk);  
+            bk.addActionListener(this);  
+            m[x]=current;  
+            x++;  
+            current++;  
+            set();    
+            if(current==9)  
+                b2.setText("Result");  
+            setVisible(false);  
+            setVisible(true);  
+        }  
+        for(int i=0,y=1;i<x;i++,y++)  
+        {  
+        if(e.getActionCommand().equals("Save"+y))  
+        {  
+            if(check())  
+                count=count+1;  
+            now=current;  
+            current=m[y];  
+            set();  
+            ((JButton)e.getSource()).setEnabled(false);  
+            current=now;  
+        }  
+        }  
+      
+        if(e.getActionCommand().equals("Result"))  
+        {  
+            if(check())  
+                count=count+1;  
+            current++;  
+            //System.out.println("correct ans="+count);  
+            JOptionPane.showMessageDialog(this,"correct ans="+count);  
+            System.exit(0);  
+        }  
+    }  
+    void set()  
+    {  
+        jb[4].setSelected(true);  
+        if(current==0)  
+        {  
+            l.setText("Que1: The 'Dalong Village' covering an area of 11.35 sq. km. has recently (May 2017) been declared as Biodiversity Heritage Site under Section 37(1) of Biological Diversity Act, 2002. The village is situated in the Indian State of -");  
+            jb[0].setText("Manipur");jb[1].setText(" Madhya Pradesh");jb[2].setText(" Mizoram");jb[3].setText("Maharashtra");   
+        }  
+        if(current==1)  
+        {  
+            l.setText("Que2:  ........... is the first woman to head a public sector bank.");  
+            jb[0].setText("Arundhati Bhattacharya");jb[1].setText("Shikha Sharma");jb[2].setText("Chanda Kochar");jb[3].setText("Usha Ananthasubramanyan");  
+        }  
+        if(current==2)  
+        {  
+            l.setText("Que3:  World Tourism Day is celebrated on-");  
+            jb[0].setText("September 12");jb[1].setText("September 25");jb[2].setText("September 27");jb[3].setText("September 29");  
+        }  
+        if(current==3)  
+        {  
+            l.setText("Que4: Where is Bose Institute?");  
+            jb[0].setText("June 21");jb[1].setText(" March 21");jb[2].setText("April 22");jb[3].setText(" May 31");  
+        }  
+        if(current==4)  
+        {  
+            l.setText("Que5:  When Government of India confers the "Highest Civilian Honor for Women" by presenting "Nari Shakti Puraskars" ?");  
+            jb[0].setText("June 5");jb[1].setText("8th March, every year, International Women's Day");jb[2].setText(" June 21");jb[3].setText("April 7");  
+        }  
+        if(current==5)  
+        {  
+            l.setText("Que6: The motif of 'Hampi with Chariot' is printed on the reverse of which currency note?");  
+            jb[0].setText(" One Rupee Note");jb[1].setText(" Rs. 500 note");jb[2].setText("Rs. 50 note");jb[3].setText("Rs. 1000 note");  
+        }  
+        if(current==6)  
+        {  
+            l.setText("Que7:  'Line of Blood' is a book written by whom? ");  
+            jb[0].setText("Bairaj Khanna");jb[1].setText(" Ursula Vernon");jb[2].setText(" Amal EI-Mohtar");  
+                        
+        }  
+        if(current==7)  
+        {  
+            l.setText("Que8: Which state launch a project that aims to provide free internet access to the poor in the State?");  
+            jb[0].setText("Sikkim");jb[1].setText("Kerala");jb[2].setText("Karnataka");  
+                        jb[3].setText(" Assam");         
+        }  
+        if(current==8)  
+        {  
+            l.setText("Que9:The National Aeronautics and Space Administration renamed its Wide Field Infrared Survey Telescope as?");  
+            jb[0].setText("Hubble 2 Space Telescope");jb[1].setText(" Nancy Grace Roman Space Telescope");jb[2].setText("Hubble legacy Space Telescope");jb[3].setText("Legend Grace Space Telescope");  
+        }  
+        if(current==9)  
+        {  
+            l.setText("Que10: Name the first cricketer to score 1000 runs in an innings in any competitive match");  
+            jb[0].setText("Prithvi Shaw");jb[1].setText("Pranav Dhanawade");jb[2].setText("Virat Kohli");  
+                        jb[3].setText("Shikhar Dhawan");  
+        }  
+        l.setBounds(30,40,450,20);  
+        for(int i=0,j=0;i<=90;i+=30,j++)  
+            jb[j].setBounds(50,80+i,200,20);  
+    }  
+    boolean check()  
+    {  
+        if(current==0)  
+            return(jb[1].isSelected());  
+        if(current==1)  
+            return(jb[2].isSelected());  
+        if(current==2)  
+            return(jb[3].isSelected());  
+        if(current==3)  
+            return(jb[0].isSelected());  
+        if(current==4)  
+            return(jb[2].isSelected());  
+        if(current==5)  
+            return(jb[2].isSelected());  
+        if(current==6)  
+            return(jb[1].isSelected());  
+        if(current==7)  
+            return(jb[3].isSelected());  
+        if(current==8)  
+            return(jb[1].isSelected());  
+        if(current==9)  
+            return(jb[2].isSelected());  
+        return false;  
+    }  
+    public static void main(String s[])  
+    {  
+        new OnlineTest("Online Test Of General Knowledge");  
+    }  
+}  
