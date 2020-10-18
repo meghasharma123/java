@@ -1,0 +1,137 @@
+Java.swing:
+eg:
+import javax.swing.*;  
+public class FirstSwingExample {  
+public static void main(String[] args) {  
+JFrame f=new JFrame();//creating instance of JFrame  
+          
+JButton b=new JButton("click");//creating instance of JButton  
+b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
+          
+f.add(b);//adding button in JFrame  
+          
+f.setSize(400,500);//400 width and 500 height  
+f.setLayout(null);//using no layout managers  
+f.setVisible(true);//making the frame visible  
+}  
+}            
+
+
+
+Java.math:
+eg:
+package MathFunctions;
+
+public class AbsMethod {
+	public static void main(String[] args) {
+		double b = 10.9666, c = -14.9865;
+		float d = 1.23f, e = 4.809f;
+		long f = 200, g = -400;
+
+		System.out.println("Absolute value of Positive Integer: " + Math.abs(60));
+		System.out.println("Absolute value of Negative Integer: " + Math.abs(-20));
+		
+		System.out.println("\nAbsolute value of Positive Double: " + Math.abs(b));
+		System.out.println("Absolute value of Negative Double: " + Math.abs(c));
+		
+		System.out.println("\nAbsolute value of Positive Float: " + Math.abs(d));
+		System.out.println("Absolute value of Negative Float: " + Math.abs(e));
+		
+		System.out.println("\nAbsolute value of Positive Number: " + Math.abs(f));
+		System.out.println("Absolute value of Negative Number: " + Math.abs(g));
+	}
+}
+
+
+Java.net:
+eg:
+import java.net.*; 
+import java.io.*; 
+  
+public class Client 
+{ 
+    
+    private Socket socket            = null; 
+    private DataInputStream  input   = null; 
+    private DataOutputStream out     = null; 
+  
+    
+    public Client(String address, int port) 
+    { 
+        
+        try
+        { 
+            socket = new Socket(address, port); 
+            System.out.println("Connected"); 
+  
+            
+            input  = new DataInputStream(System.in); 
+  
+           
+            out    = new DataOutputStream(socket.getOutputStream()); 
+        } 
+        catch(UnknownHostException u) 
+        { 
+            System.out.println(u); 
+        } 
+        catch(IOException i) 
+        { 
+            System.out.println(i); 
+        } 
+  
+       
+        String line = ""; 
+  
+       
+        while (!line.equals("Over")) 
+        { 
+            try
+            { 
+                line = input.readLine(); 
+                out.writeUTF(line); 
+            } 
+            catch(IOException i) 
+            { 
+                System.out.println(i); 
+            } 
+        } 
+  
+        // close the connection 
+        try
+        { 
+            input.close(); 
+            out.close(); 
+            socket.close(); 
+        } 
+        catch(IOException i) 
+        { 
+            System.out.println(i); 
+        } 
+    } 
+  
+    public static void main(String args[]) 
+    { 
+        Client client = new Client("127.0.0.1", 5000); 
+    } 
+} 
+
+
+Java.sql:
+eg:
+import java.sql.*;  
+class MysqlCon{  
+public static void main(String args[]){  
+try{  
+Class.forName("com.mysql.jdbc.Driver");  
+Connection con=DriverManager.getConnection(  
+"jdbc:mysql://localhost:3306/sonoo","root","root");  
+Statement stmt=con.createStatement();  
+ResultSet rs=stmt.executeQuery("select * from emp");  
+while(rs.next())  
+System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+con.close();  
+}catch(Exception e){ System.out.println(e);}  
+}  
+}  
+
+
