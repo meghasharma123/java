@@ -1,0 +1,61 @@
+//BFS
+
+
+class Solution
+{
+    public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        boolean visited[]=new boolean[V];
+        Queue<Integer> q=new LinkedList<Integer>();
+        ArrayList<Integer> ans=new ArrayList<Integer>();
+         visited[0]=true;
+        q.add(0);
+        
+        while(!q.isEmpty())
+        {
+            int a =q.poll();
+            ans.add(a);
+            for(int i:adj.get(a)){
+                if(!visited[i]){
+                    visited[i]=true;
+                    q.add(i);
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+
+//DFS
+
+class Solution
+{
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        ArrayList<Integer> res=new ArrayList<>();
+        boolean[] visited=new boolean[V];
+        dfs(0,visited,res,adj);
+        return res;
+      }
+      
+static void dfs(int node,boolean visited[] ,ArrayList<Integer> res,ArrayList<ArrayList<Integer>> adj){
+       visited[node]=true;
+       res.add(node);
+       for(int v:adj.get(node)){
+           if(!visited[v]){
+               dfs(v,visited,res,adj);
+           }
+       }
+          
+      }
+      
+}
+
+
+
+
+
